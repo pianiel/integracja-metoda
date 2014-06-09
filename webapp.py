@@ -8,9 +8,10 @@ app = Flask(__name__)
 def sendResult(data, result):
     output = {'input':data, 'output':result}
     toSend = json.dumps(output)
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     print 'SENDING: ', toSend
     for url in OUTPUT_URLS:
-        r = requests.post(url, data=toSend)
+        r = requests.post(url, data=toSend, headers=headers)
         print 'R: ', r
 
 @app.route('/')
