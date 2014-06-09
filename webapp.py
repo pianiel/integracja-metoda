@@ -8,7 +8,7 @@ def sendResult(data, result):
     output = {'input':data, 'output':result}
     toSend = json.dumps(output)
     print 'SENDING: ', toSend
-    url = 'integracja.herokuapp.com/rest/sequences'
+    url = 'http://integracja.herokuapp.com/rest/sequences'
     r = requests.post(url, data=toSend)
 
 @app.route('/')
