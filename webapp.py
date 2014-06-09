@@ -1,6 +1,7 @@
 import os, json, requests
 from flask import Flask, request
 from analyzer import *
+from config import *
 
 app = Flask(__name__)
 
@@ -8,8 +9,9 @@ def sendResult(data, result):
     output = {'input':data, 'output':result}
     toSend = json.dumps(output)
     print 'SENDING: ', toSend
-    url = 'http://integracja.herokuapp.com/rest/sequences'
-    r = requests.post(url, data=toSend)
+    for url in OUTPUT_URLS:
+        r = requests.post(url, data=toSend)
+        print 'R: ', r
 
 @app.route('/')
 def hello():
