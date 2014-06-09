@@ -4,9 +4,10 @@ from analyzer import *
 
 app = Flask(__name__)
 
-def sendResult(result):
-    #TODO implement
-    pass
+def sendResult(data, result):
+    toSend = {'input':data, 'output':result}
+    print 'SENDING: ', toSend
+    #TODO send it somewhere...
 
 @app.route('/')
 def hello():
@@ -16,8 +17,8 @@ def hello():
 def generate():
     print 'INPUT: ', request.json
     result = Analyzer(request.json['series']).analyze()
-    sendResult(result)
     print 'RESULT: ', result
+    sendResult(request.json, result)
     return '200'
 
 if __name__ == '__main__':

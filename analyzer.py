@@ -24,7 +24,7 @@ class Analyzer:
         return self.jsonize(c.most_common(RESULT_SIZE))
 
     def jsonize(self, data):
-        return json.dumps([{"seq":s,"count":cnt} for s,cnt in data])
+        return json.dumps([s for s, cnt in data])
 
     def timestampConditionFullfilled(self, s):
         timestamps = self.extractField(s, 'timestamp')
