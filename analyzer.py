@@ -4,8 +4,8 @@ from itertools import combinations
 from collections import Counter
 
 class Analyzer:
-    def __init__ (self, inputRawContent):
-        self.inputContent = json.loads(inputRawContent)
+    def __init__ (self, inputContent):
+        self.inputContent = inputContent
 
     def analyze (self):
         s = self.inputContent
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     filename = sys.argv[1]
     with open(filename) as f:
         jsonContent = f.read()
-        print Analyzer(jsonContent).analyze()
+        print Analyzer(json.loads(jsonContent)).analyze()
