@@ -1,11 +1,12 @@
-import os
+import os, json
 from flask import Flask, request
 from analyzer import *
 
 app = Flask(__name__)
 
 def sendResult(data, result):
-    toSend = {'input':data, 'output':result}
+    output = {'input':data, 'output':result}
+    toSend = json.dumps(output)
     print 'SENDING: ', toSend
     #TODO send it somewhere...
 
